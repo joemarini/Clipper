@@ -26,6 +26,9 @@
 
 /**
  * Clipper
+ * 
+ * Constructor function for the Clipper object. Takes a clipboard as
+ * an argument, which comes from the onCopy or onPaste event
  */
 var Clipper = function(oClipBoard) {
   if (!oClipBoard)
@@ -91,6 +94,8 @@ Clipper.prototype.setData = function(objData, strType) {
     }
     else if (objData.nodeType == 3) {
       // element is a text element, get its text content
+      str = objData.getTextContent();
+      this.clipBoard.setData(type, str);
     }
   }
   else {
